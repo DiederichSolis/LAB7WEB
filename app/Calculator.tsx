@@ -45,8 +45,8 @@ export default function Calculator(){
 
   return (
     <main style={{ display: 'flex', minHeight: '100vh', flexDirection: 'column', alignItems: 'center', padding: '24px' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2.5rem' }}>Calculadora</h1>
-<div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+        <h1 style={{ fontSize: '2.5rem',color:'rgb(255, 255, 255)', fontWeight: 'bold', marginBottom: '2.5rem' }}>Calculadora</h1>
+<div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '4rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
   <input
     type="text"
     style={{ width: '100%', marginBottom: '0.5rem', fontSize: '2rem', borderBottom: '2px solid #ccc', outline: 'none' }}
@@ -64,7 +64,7 @@ export default function Calculator(){
       <button
         key={btn}
         onClick={() => Accionar(btn)}
-        style={{ fontSize: '1.5rem', backgroundColor: '#ccc', padding: ' 1rem', borderRadius: '10rem', cursor: 'pointer' }}
+        style={{ fontSize: '1.5rem',color:'rgb(255, 255, 255)', backgroundColor: 'rgb(2, 48, 71)', padding: ' 1rem', borderRadius: '8rem', cursor: 'pointer' }}
       > 
         {btn}
       </button>
