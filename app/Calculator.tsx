@@ -6,7 +6,7 @@ export default function Calculator() {
     const [resultado, setResult] = useState('');
     const [data, setData] = useState('');
 
-    const Accionar = (value: string) => {
+   const Accionar = (value: string) => {
         if (value === '=') {
             try {
                 const evaluar = eval(data);
