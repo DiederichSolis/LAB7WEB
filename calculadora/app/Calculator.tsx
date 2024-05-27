@@ -6,6 +6,13 @@ export default function Calculator(){
 
 
     const Accionar = (value: string) => {
+        if (value === '='){
+            try {
+            const evaluar = eval(data);
+            } catch (error) {
+                
+            }
+        }
 
     }
 
