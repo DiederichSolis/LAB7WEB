@@ -6,9 +6,28 @@ import React from 'react';
 
 
 describe('Calculator Component', () => {
+  it('Calculadora inicial', () => {
+    render(<Calculator />);
+    const display = screen.getByRole('textbox', { name: /display/i });
+    const result = screen.getByRole('textbox', { name: /resultado/i });
+    expect(display).toBeInTheDocument();
+    expect(result).toBeInTheDocument();
+    expect(display).toHaveValue('');
+    expect(result).toHaveValue('');
+  });
 
+  it('display on button click', () => {
+    render(<Calculator />);
+    const display = screen.getByRole('textbox', { name: /display/i });
+    fireEvent.click(screen.getByText('1'));
+    expect(display).toHaveValue('1');
+    fireEvent.click(screen.getByText('2'));
+    expect(display).toHaveValue('12');
+    fireEvent.click(screen.getByText('3'));
+    expect(display).toHaveValue('123');
+  });
 
-  it('resultado "=" button click', () => {
+  it('calcualro resultado "=" button click', () => {
     render(<Calculator />);
     const display = screen.getByRole('textbox', { name: /display/i });
     const result = screen.getByRole('textbox', { name: /resultado/i });
@@ -20,7 +39,7 @@ describe('Calculator Component', () => {
     expect(result).toHaveValue('3');
   });
 
-  it('Limpiar "C" button click', () => {
+  it('uso de  "C" button click', () => {
     render(<Calculator />);
     const display = screen.getByRole('textbox', { name: /display/i });
     fireEvent.click(screen.getByText('1'));
@@ -28,7 +47,7 @@ describe('Calculator Component', () => {
     expect(display).toHaveValue('');
   });
 
-  it('convertir numero negativo "+/-" button click', () => {
+  it('convertir numero negativo"+/-" button click', () => {
     render(<Calculator />);
     const display = screen.getByRole('textbox', { name: /display/i });
     fireEvent.click(screen.getByText('1'));
@@ -36,7 +55,7 @@ describe('Calculator Component', () => {
     expect(display).toHaveValue('-1');
   });
 
-  it('should delete last character on "Backspace" button click', () => {
+  it('eliminar el ulimo dato de la cadenas "Backspace" button click', () => {
     render(<Calculator />);
     const display = screen.getByRole('textbox', { name: /display/i });
     fireEvent.click(screen.getByText('1'));
