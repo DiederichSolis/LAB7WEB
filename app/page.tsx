@@ -1,5 +1,5 @@
 // pages/index.tsx
-import Calculator from '../app/Calculator';
+import Calculator from './Calculadora';
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Calculator from './Calculator';
+import Calculator from './Calculadora';
 // Calculator.test.tsx
 import '@testing-library/jest-dom';
 import React from 'react';
