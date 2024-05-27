@@ -1,6 +1,6 @@
 
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
 export default function Calculator() {
     const [resultado, setResult] = useState('');
@@ -32,6 +32,8 @@ export default function Calculator() {
             } else {
                 setData('-' + data);
             }
+        } else if (value === 'Backspace') {
+            setData((prevData) => prevData.slice(0, -1)); // Eliminar el último carácter
         } else {
             // Evitar agregar más de 9 caracteres
             if (data.length < 9) {
@@ -40,23 +42,28 @@ export default function Calculator() {
         }
     };
 
-    const botones = [
-        'C', '+/-', ' ', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '', '='
-    ];
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            const key = event.key;
+            const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/', '=', 'Enter', 'Backspace'];
+            if (allowedKeys.includes(key)) {
+                event.preventDefault(); // Evitar que se propague el evento
+                if (key === 'Enter') {
+                    Accionar('=');
+                } else {
+                    Accionar(key);
+                }
+            }
+        };
+        document.body.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.body.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [data]);
 
-    const styles = {
-      position: 'fixed', // Fijar la posición del footer
-      bottom: 0, // Colocarla en la parte inferior
-      background: 'rgba(0, 0, 0, 0.5)', // Color de fondo semi-transparente
-      color: 'white', // color de texto
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: '0%',
-      height: '5vh',
-      width: '100%',
-      zIndex: 1000, // Asegurar que esté por encima de otros elementos
-  };
+    const botones = [
+        'C', '+/-', ' ', '÷', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '', '='
+    ];
 
     return (
         <main style={{ display: 'flex', minHeight: '100vh', flexDirection: 'column', alignItems: 'center', padding: '24px' }}>
@@ -86,13 +93,9 @@ export default function Calculator() {
                     ))}
                 </div>
             </div>
-            <footer style={{position: 'fixed', bottom: 0,background: 'rgba(0, 0, 0, 0.5)', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0%', height: '5vh',width: '100%',zIndex: 1000, }}>
-            <p>&copy; 2024 - Todos los derechos reservados Autor: Diederich Solis</p>
-        </footer>
+            <footer style={{ position: 'fixed', bottom: 0, background: 'rgba(0, 0, 0, 0.5)', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0%', height: '5vh', width: '100%', zIndex: 1000, }}>
+                <p>&copy; 2024 - Todos los derechos reservados Autor: Diederich Solis</p>
+            </footer>
         </main>
     );
 };
-
-
-
-
