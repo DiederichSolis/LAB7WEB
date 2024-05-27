@@ -21,7 +21,9 @@ export default function Calculator(){
             } catch (error) {
                 setResult('ERROR');
             }
-        }
+        }else if (value === 'C') {
+            setResult('');
+            setData('');
 
     }
 
