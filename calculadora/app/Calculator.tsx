@@ -9,8 +9,17 @@ export default function Calculator(){
         if (value === '='){
             try {
             const evaluar = eval(data);
+
+            if (evaluar < 0) {
+                setResult('ERROR');
+              } else if (evaluar > 999999999) {
+                setResult('ERROR');
+              } else {
+                setResult(evaluar.toString());
+              }
+
             } catch (error) {
-                
+                setResult('ERROR');
             }
         }
 
