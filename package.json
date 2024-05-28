@@ -11,6 +11,8 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@swc/core": "^1.5.7",
+    "@swc/helpers": "^0.5.11",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
